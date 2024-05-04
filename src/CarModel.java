@@ -24,4 +24,12 @@ public class CarModel {
     public void setMonthlySales(Map<YearMonth, Integer> monthlySales) {
         this.monthlySales = monthlySales;
     }
+
+    @Override
+    public String toString() {
+        return "CarModel{" +
+                "carModel: " + carModel + ",\n" +
+                "monthlySales: " + monthlySales + ",\n" +
+                "}";
+    }
 }
