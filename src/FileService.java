@@ -12,7 +12,7 @@ public class FileService {
         CarModel car;
 
         for (String file : fileNames) {
-            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file + ".csv"))) {
                 /*Yeet that header right into the sea*/
                 bufferedReader.readLine();
                 car = new CarModel(file);
