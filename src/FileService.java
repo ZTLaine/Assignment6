@@ -8,27 +8,26 @@ import java.util.List;
 import java.util.Map;
 
 public class FileService {
-    CarModel readFiles(List<String> fileNames){
+    void readFiles(List<String> fileNames, SalesReportService salesReport) {
         CarModel car;
 
-        for(String file : fileNames){
-            try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
+        for (String file : fileNames) {
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
                 bufferedReader.readLine();
                 car = new CarModel(file);
                 Map<YearMonth, Integer> sales = new LinkedHashMap<>();
+
                 while (bufferedReader.ready()) {
                     String[] salesInput = bufferedReader.readLine().split(",");
                     YearMonth saleMonth = YearMonth.parse(salesInput[0], DateTimeFormatter.ofPattern("MMM-yy"));
-                    sales.put(saleMonth,Integer.valueOf(salesInput[1]));
+                    sales.put(saleMonth, Integer.valueOf(salesInput[1]));
                 }
+
                 car.setMonthlySales(sales);
-                return car;
-            }
-            catch (IOException e){
+                salesReport.addCarModel(car);
+            } catch (IOException e) {
                 System.out.println("File error with " + file + ": " + e.getMessage());
             }
         }
-//        This feels sloppy
-        return null;
     }
 }
