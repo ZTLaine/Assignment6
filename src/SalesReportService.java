@@ -39,8 +39,19 @@ public class SalesReportService {
         FileService fileService = new FileService();
         fileService.readFiles(fileNames, this);
 
-        for(CarModel car : carModelData){
-            System.out.println(car.toString());
+//        carModelData.stream()
+////                .filter(models -> carModelData.get(0).getMonthlySales().forEach())
+//                .map(carModel -> carModel.)
+        for (CarModel car : carModelData) {
+            car.findBestMonth();
+            car.findWorstMonth();
+
+            System.out.println(car.getCarModel() + " Yearly Sales Report");
+            System.out.println("~~~~~~~~~~~~~~~~~~");
+            System.out.println("The best month for " + car.getCarModel() + " was: " + car.getBestMonth());
+            System.out.println("The worst month for " + car.getCarModel() + " was: " + car.getWorstMonth());
+
+            System.out.println("\n");
         }
     }
 }
