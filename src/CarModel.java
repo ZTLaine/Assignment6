@@ -1,10 +1,13 @@
-import java.time.*;
-import java.util.*;
+import java.time.YearMonth;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CarModel {
     private String carModel;
     private Map<YearMonth, Integer> monthlySales = new LinkedHashMap<>();
-    private Map<YearMonth, Integer> yearlySales = new HashMap<>();
+    private Map<Integer, Integer> yearlySales = new LinkedHashMap<Integer, Integer>();
     private YearMonth bestMonth;
     private YearMonth worstMonth;
 
@@ -28,14 +31,18 @@ public class CarModel {
         this.monthlySales = monthlySales;
     }
 
-    public Map<YearMonth, Integer> getYearlySales() {
+    public Map<Integer, Integer> getYearlySales() {
         return yearlySales;
     }
 
-    public void setYearlySales(Map<YearMonth, Integer> yearlySales) {
-        this.yearlySales = yearlySales;
+    public void setYearlySales() {
+        this.yearlySales = monthlySales.entrySet()
+                .stream()
+                .collect(Collectors.groupingBy(entry -> entry.getKey().getYear(),
+                        Collectors.summingInt(Map.Entry::getValue)));
     }
-    public void addYearlySale(Map<YearMonth, Integer> yearlySale) {
+
+    public void addYearlySale(Map<Integer, Integer> yearlySale) {
         yearlySales.putAll(yearlySale);
     }
 

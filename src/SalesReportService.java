@@ -39,14 +39,16 @@ public class SalesReportService {
         FileService fileService = new FileService();
         fileService.readFiles(fileNames, this);
 
-//        carModelData.stream()
-////                .filter(models -> carModelData.get(0).getMonthlySales().forEach())
-//                .map(carModel -> carModel.)
+
         for (CarModel car : carModelData) {
             car.findBestMonth();
             car.findWorstMonth();
 
             System.out.println(car.getCarModel() + " Yearly Sales Report");
+            car.setYearlySales();
+            car.getYearlySales().entrySet()
+                    .forEach(year -> System.out.println(year.getKey() + " -> " + year.getValue()));
+
             System.out.println("~~~~~~~~~~~~~~~~~~");
             System.out.println("The best month for " + car.getCarModel() + " was: " + car.getBestMonth());
             System.out.println("The worst month for " + car.getCarModel() + " was: " + car.getWorstMonth());
