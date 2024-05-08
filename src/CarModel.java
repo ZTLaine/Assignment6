@@ -1,3 +1,7 @@
+//  5/8/24
+//  Zack Laine
+//  Assignment 6
+
 import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -7,7 +11,7 @@ import java.util.stream.Collectors;
 public class CarModel {
     private String carModel;
     private Map<YearMonth, Integer> monthlySales = new LinkedHashMap<>();
-    private Map<Integer, Integer> yearlySales = new LinkedHashMap<Integer, Integer>();
+    private Map<Integer, Integer> yearlySales = new LinkedHashMap<>();
     private YearMonth bestMonth;
     private YearMonth worstMonth;
 

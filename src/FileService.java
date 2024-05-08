@@ -1,3 +1,7 @@
+//  5/8/24
+//  Zack Laine
+//  Assignment 6
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
