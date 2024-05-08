@@ -3,7 +3,6 @@
 //  Assignment 6
 
 import java.time.YearMonth;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -44,10 +43,6 @@ public class CarModel {
                 .stream()
                 .collect(Collectors.groupingBy(entry -> entry.getKey().getYear(),
                         Collectors.summingInt(Map.Entry::getValue)));
-    }
-
-    public void addYearlySale(Map<Integer, Integer> yearlySale) {
-        yearlySales.putAll(yearlySale);
     }
 
     public YearMonth getBestMonth() {

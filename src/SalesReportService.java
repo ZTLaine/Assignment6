@@ -35,10 +35,6 @@ public class SalesReportService {
         this.fileNames = fileNames;
     }
 
-    public void addFileName(String fileName) {
-        fileNames.add(fileName);
-    }
-
     void report() {
         FileService fileService = new FileService();
         fileService.readFiles(fileNames, this);
@@ -50,8 +46,7 @@ public class SalesReportService {
 
             System.out.println(car.getCarModel() + " Yearly Sales Report");
             car.setYearlySales();
-            car.getYearlySales().entrySet()
-                    .forEach(year -> System.out.println(year.getKey() + " -> " + year.getValue()));
+            car.getYearlySales().forEach((key, value) -> System.out.println(key + " -> " + value));
 
             System.out.println("~~~~~~~~~~~~~~~~~~");
             System.out.println("The best month for " + car.getCarModel() + " was: " + car.getBestMonth());
