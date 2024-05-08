@@ -39,7 +39,6 @@ public class SalesReportService {
         FileService fileService = new FileService();
         fileService.readFiles(fileNames, this);
 
-
         for (CarModel car : carModelData) {
             car.findBestMonth();
             car.findWorstMonth();
